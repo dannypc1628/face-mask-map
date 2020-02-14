@@ -1,2 +1,10 @@
-<app-side-bar [features]="features"></app-side-bar>
-<app-map [features]="features"></app-map>
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <div class="col-3 w-100">
+      <app-side-bar [features]="features" class="h-100"></app-side-bar>
+    </div>
+    <div class="col-9 w-100 h-100">
+      <app-map [features]="features"></app-map>
+    </div>
+  </div>
+</div>
