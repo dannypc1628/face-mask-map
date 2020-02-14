@@ -9,15 +9,16 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'mapproject';
   data: any;
-
+  features = [];
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
     this.http.get('https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json')
-      .subscribe((value) => {
+      .subscribe((value: any) => {
         this.data = value;
         console.log(this.data);
+        this.features = value.features;
       });
   }
 }
