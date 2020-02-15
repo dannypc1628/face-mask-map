@@ -16,6 +16,8 @@ export class MapComponent implements OnInit, OnChanges {
   @Input()
   center = [];
 
+  markersObj = {};
+
   tiles;
   constructor() { }
 
@@ -40,6 +42,9 @@ export class MapComponent implements OnInit, OnChanges {
     }
     if (changes.hasOwnProperty('center')) {
       this.map.panTo(this.center);
+      const key = this.center[0] + this.center[1];
+      const marker = this.markersObj[key];
+      marker.openPopup();
     }
   }
 
@@ -52,6 +57,8 @@ export class MapComponent implements OnInit, OnChanges {
         '<br>成人口罩：' + item.properties.mask_adult +
         '<br>兒童口罩：' + item.properties.mask_child
       );
+    const key = item.geometry.coordinates[1] + item.geometry.coordinates[0];
+    this.markersObj[key] = marker;
   }
 
 }
