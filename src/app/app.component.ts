@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'mapproject';
   data: any;
   features = [];
+  center = [];
   constructor(private http: HttpClient) {
   }
 
@@ -20,5 +21,9 @@ export class AppComponent implements OnInit {
         console.log(this.data);
         this.features = value.features;
       });
+  }
+
+  changeMapCenter(coordinates) {
+    this.center = [coordinates[1], coordinates[0]];
   }
 }

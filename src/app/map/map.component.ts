@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as L from 'leaflet';
 
 
@@ -13,6 +13,9 @@ export class MapComponent implements OnInit, OnChanges {
   @Input()
   features = [];
 
+  @Input()
+  center = [];
+
   tiles;
   constructor() { }
 
@@ -24,16 +27,22 @@ export class MapComponent implements OnInit, OnChanges {
     });
 
     this.tiles.addTo(this.map);
-  }
 
-  ngOnChanges(): void {
-    console.log(this.features);
-    if (this.features.length > 0) {
-      this.features.forEach(element => {
-        this.addMarker(element);
-      });
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes.hasOwnProperty('features'));
+    if (changes.hasOwnProperty('features')) {
+      if (this.features.length > 0) {
+        this.features.forEach(element => {
+          this.addMarker(element);
+        });
+      }
+    }
+    if (changes.hasOwnProperty('center')) {
+      this.map.panTo(this.center);
     }
   }
+
 
   addMarker(item) {
     const marker = L
@@ -42,7 +51,7 @@ export class MapComponent implements OnInit, OnChanges {
       .bindPopup(item.properties.name +
         '<br>成人口罩：' + item.properties.mask_adult +
         '<br>兒童口罩：' + item.properties.mask_child
-        );
+      );
   }
 
 }
