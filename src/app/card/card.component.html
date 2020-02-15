@@ -4,7 +4,15 @@
     <p class="card-text">地址：{{item.properties.address}}</p>
     <p class="card-text">電話：{{item.properties.phone}}</p>
 
-    <a href="#" class="btn btn-success mr-2">成人口罩剩餘：{{item.properties.mask_adult}}</a>
-    <a href="#" class="btn btn-warning ml-2">兒童口罩剩餘：{{item.properties.mask_child}}</a>
+    <a href="#" class="btn mr-2"
+    [ngClass]="{'btn-success': item.properties.mask_adult>60,
+                'btn-warning': item.properties.mask_adult<=60&&item.properties.mask_adult>0,
+                'btn-secondary': item.properties.mask_adult==0}">
+      成人口罩剩餘：{{item.properties.mask_adult}}
+    </a>
+    <a href="#" class="btn ml-2" [ngClass]="{'btn-success': item.properties.mask_child>20,
+                  'btn-warning': item.properties.mask_child<20&&item.properties.mask_child>0,
+                  'btn-secondary': item.properties.mask_child==0}">
+      兒童口罩剩餘：{{item.properties.mask_child}}</a>
   </div>
 </div>
