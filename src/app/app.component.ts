@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'mapproject';
   data: any;
+  cityData;
   features = [];
   center = [];
   constructor(private http: HttpClient) {
@@ -20,6 +21,11 @@ export class AppComponent implements OnInit {
         this.data = value;
         console.log(this.data);
         this.features = value.features;
+      });
+    this.http.get('/assets/CityCountyData.json')
+      .subscribe((value: any) => {
+        this.cityData = value;
+        console.log(value);
       });
   }
 
