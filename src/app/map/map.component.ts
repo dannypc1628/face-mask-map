@@ -28,7 +28,7 @@ export class MapComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    this.map = L.map('map', { center: [22.604799, 120.2976256], zoom: 16 });
+    this.map = L.map('map', { center: [25.0249211, 121.5075035], zoom: 15 });
     this.tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

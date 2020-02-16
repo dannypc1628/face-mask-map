@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
         this.data = value;
         console.log(this.data);
         this.features = value.features;
-        this.localFeatures = value.features;
+        this.selectLocationData({ City: '台北市', Area: '中正區' });
       });
     this.http.get('/assets/CityCountyData.json')
       .subscribe((value: any) => {
