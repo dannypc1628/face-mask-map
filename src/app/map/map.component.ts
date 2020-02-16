@@ -17,7 +17,13 @@ export class MapComponent implements OnInit, OnChanges {
   center = [];
 
   markersObj = {};
-
+  icons = {
+    green: '',
+    gold: '',
+    orange: '',
+    red: '',
+    grey: ''
+  };
   tiles;
   constructor() { }
 
@@ -30,6 +36,46 @@ export class MapComponent implements OnInit, OnChanges {
 
     this.tiles.addTo(this.map);
 
+    const greenIcon = L.icon({
+      iconUrl: 'marker-icon-green.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    const goldIcon = L.icon({
+      iconUrl: 'marker-icon-gold.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    const orangeIcon = L.icon({
+      iconUrl: 'marker-icon-orange.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    const redIcon = L.icon({
+      iconUrl: 'marker-icon-red.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    const greyIcon = L.icon({
+      iconUrl: 'marker-icon-grey.png',
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    });
+    this.icons.green = greenIcon;
+    this.icons.gold = goldIcon;
+    this.icons.red = redIcon;
+    this.icons.grey = greyIcon;
+    this.icons.orange = orangeIcon;
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes.hasOwnProperty('features'));
@@ -51,7 +97,7 @@ export class MapComponent implements OnInit, OnChanges {
 
   addMarker(item) {
     const marker = L
-      .marker([item.geometry.coordinates[1], item.geometry.coordinates[0]])
+      .marker([item.geometry.coordinates[1], item.geometry.coordinates[0]], { icon: this.getColorIcon(item), title: item.properties.name })
       .addTo(this.map)
       .bindPopup(item.properties.name +
         '<br>成人口罩：' + item.properties.mask_adult +
@@ -59,6 +105,30 @@ export class MapComponent implements OnInit, OnChanges {
       );
     const key = item.geometry.coordinates[1] + item.geometry.coordinates[0];
     this.markersObj[key] = marker;
+  }
+
+  getColorIcon(item) {
+    const mask_adult = item.properties.mask_adult;
+    const mask_child = item.properties.mask_child;
+    // 成人口罩大於60與兒童口罩大於0為綠色
+    if (mask_adult >= 60 && mask_child > 0) {
+      return this.icons.green;
+    }
+    // 成人口罩大於0小於60與兒童口罩大於0為黃色
+    if ((mask_adult > 0 && mask_adult < 60) && mask_child > 0) {
+      return this.icons.gold;
+    }
+    // 僅剩兒童口罩為橘色
+    if (mask_adult === 0 && mask_child > 0) {
+      return this.icons.orange;
+    }
+    // 全無口罩為灰色
+    if (mask_adult === 0 && mask_child === 0) {
+      return this.icons.grey;
+    }
+    // 數量未知或僅剩成人口罩而無兒童口罩為紅色
+    return this.icons.red;
+
   }
 
 }
