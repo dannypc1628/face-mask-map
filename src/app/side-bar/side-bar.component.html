@@ -3,7 +3,7 @@
     <div class="form-group row mt-3">
       <label for="exampleFormControlSelect1" class="pr-0 text-center col-sm-2 col-form-label">縣市</label>
       <div class="col pr-5">
-        <select class="form-control " id="formControlSelect1" (click)="changeCity($event)">
+        <select class="form-control " id="formControlSelect1" (change)="changeCity($event)">
           <option *ngFor="let item of cityData;let index=index;" value="{{index}}">{{item.CityName}}</option>
         </select>
       </div>
@@ -11,7 +11,7 @@
     <div class="form-group row">
       <label for="exampleFormControlSelect1" class="pr-0 text-center col-sm-2  col-form-label">地區</label>
       <div class="col pr-5">
-        <select class="form-control" id="formControlSelect2" (click)="changeArea($event)">
+        <select class="form-control" id="formControlSelect2" (change)="changeArea($event)">
           <option *ngFor="let item of areaList">{{item.AreaName}}</option>
         </select>
       </div>
