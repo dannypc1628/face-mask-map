@@ -41,5 +41,6 @@ export class AppComponent implements OnInit {
     const loclStr: string = location.City + location.Area;
     this.localFeatures = this.features.filter(item =>
       item.properties.address.substring(0, loclStr.length) === loclStr);
+    this.changeMapCenter(this.localFeatures[0].geometry.coordinates);
   }
 }
