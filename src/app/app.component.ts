@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit {
   data: any;
   cityData;
   features = [];
+  localFeatures = [];
   center = [];
   constructor(private http: HttpClient) {
   }
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
         this.data = value;
         console.log(this.data);
         this.features = value.features;
+        this.localFeatures = value.features;
       });
     this.http.get('/assets/CityCountyData.json')
       .subscribe((value: any) => {
@@ -31,5 +34,12 @@ export class AppComponent implements OnInit {
 
   changeMapCenter(coordinates) {
     this.center = [coordinates[1], coordinates[0]];
+  }
+
+  selectLocationData(location) {
+    console.log('使用者選擇:' + location.City + location.Area);
+    const loclStr: string = location.City + location.Area;
+    this.localFeatures = this.features.filter(item =>
+      item.properties.address.substring(0, loclStr.length) === loclStr);
   }
 }
