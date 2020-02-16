@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
         this.features = value.features;
         this.selectLocationData({ City: '台北市', Area: '中正區' });
       });
-    this.http.get('/assets/CityCountyData.json')
+    this.http.get('./assets/CityCountyData.json')
       .subscribe((value: any) => {
         this.cityData = value;
         console.log(value);
