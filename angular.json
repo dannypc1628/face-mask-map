@@ -27,7 +27,6 @@
                 "input": "node_modules/leaflet/dist/images/",
                 "output": "./"
               }
-
             ],
             "styles": [
               "src/styles.css"
@@ -123,8 +122,13 @@
               "devServerTarget": "mapproject:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "mapproject"
 }
