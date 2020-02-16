@@ -15,7 +15,7 @@
         </a>
       </div>
       <div >
-        <a href="#" class="btn " [ngClass]="{'btn-success': item.properties.mask_child>20,
+        <a href="#" class="btn " [ngClass]="{'btn-success': item.properties.mask_child>=20,
                   'btn-warning': item.properties.mask_child<20&&item.properties.mask_child>0,
                   'btn-secondary': item.properties.mask_child==0}">
           兒童口罩剩餘：{{item.properties.mask_child}}
