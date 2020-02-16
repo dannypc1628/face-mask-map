@@ -1,11 +1,11 @@
 <div class="container-fluid h-100">
   <div class="row h-100">
-    <div class="col-3 w-100">
+    <div class="col-sm-3 w-100 ">
       <app-side-bar [features]="localFeatures" [cityData]="cityData"
       (clickCardEvent)="changeMapCenter($event)"
       (selectEvent)="selectLocationData($event)" class="h-100"></app-side-bar>
     </div>
-    <div class="col-9 w-100 h-100">
+    <div class="col-sm-9 w-100 h-100 p-0">
       <app-map [features]="features" [center]="center"></app-map>
     </div>
   </div>

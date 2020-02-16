@@ -1,18 +1,26 @@
-<div class="card m-2">
+<div class="card m-2 " [ngClass]="{'shadow ': hovered==true}" (mouseover)="hovered=true" (mouseleave)="hovered=false">
   <div class="card-body">
     <h5 class="card-title">{{item.properties.name}}</h5>
-    <p class="card-text">地址：{{item.properties.address}}</p>
-    <p class="card-text">電話：{{item.properties.phone}}</p>
-
-    <a href="#" class="btn mr-2"
-    [ngClass]="{'btn-success': item.properties.mask_adult>60,
+    <div class="card-text mb-2">
+      <span>地址：{{item.properties.address}}</span>
+      <br>
+      <span>電話：{{item.properties.phone}}</span>
+    </div>
+    <div class="row justify-content-between pl-3 pr-3">
+      <div >
+        <a href="#" class="btn " [ngClass]="{'btn-success': item.properties.mask_adult>60,
                 'btn-warning': item.properties.mask_adult<=60&&item.properties.mask_adult>0,
                 'btn-secondary': item.properties.mask_adult==0}">
-      成人口罩剩餘：{{item.properties.mask_adult}}
-    </a>
-    <a href="#" class="btn ml-2" [ngClass]="{'btn-success': item.properties.mask_child>20,
+          成人口罩剩餘：{{item.properties.mask_adult}}
+        </a>
+      </div>
+      <div >
+        <a href="#" class="btn " [ngClass]="{'btn-success': item.properties.mask_child>20,
                   'btn-warning': item.properties.mask_child<20&&item.properties.mask_child>0,
                   'btn-secondary': item.properties.mask_child==0}">
-      兒童口罩剩餘：{{item.properties.mask_child}}</a>
+          兒童口罩剩餘：{{item.properties.mask_child}}
+        </a>
+      </div>
+    </div>
   </div>
 </div>

@@ -10,6 +10,8 @@ export class CardComponent implements OnInit {
   @Input()
   item;
 
+  hovered = false;
+
   constructor() { }
 
   ngOnInit(): void {

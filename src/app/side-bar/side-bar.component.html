@@ -1,23 +1,26 @@
 <div class="row ">
-  <div class="col-12">口罩地圖</div>
-  <div class="col-12">
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">縣市</label>
-      <select class="form-control" id="formControlSelect1" (click)="changeCity($event)">
-        <option *ngFor="let item of cityData;let index=index;" value="{{index}}">{{item.CityName}}</option>
-      </select>
+  <div class="col-12 alert-success pb-0">
+    <div class="form-group row mt-3">
+      <label for="exampleFormControlSelect1" class="pr-0 text-center col-sm-2 col-form-label">縣市</label>
+      <div class="col pr-5">
+        <select class="form-control " id="formControlSelect1" (click)="changeCity($event)">
+          <option *ngFor="let item of cityData;let index=index;" value="{{index}}">{{item.CityName}}</option>
+        </select>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">地區</label>
-      <select class="form-control" id="formControlSelect2" (click)="changeArea($event)">
-        <option *ngFor="let item of areaList" >{{item.AreaName}}</option>
-      </select>
+    <div class="form-group row">
+      <label for="exampleFormControlSelect1" class="pr-0 text-center col-sm-2  col-form-label">地區</label>
+      <div class="col pr-5">
+        <select class="form-control" id="formControlSelect2" (click)="changeArea($event)">
+          <option *ngFor="let item of areaList">{{item.AreaName}}</option>
+        </select>
+      </div>
     </div>
   </div>
-  <div class="col-12 ">
+  <div class="col-12">
     <div class="row card-list ">
       <div class="col-12" *ngFor="let item of features">
-        <app-card [item]="item" (click)="clickCard(item.geometry.coordinates)" ></app-card>
+        <app-card [item]="item" (click)="clickCard(item.geometry.coordinates)"></app-card>
       </div>
     </div>
   </div>
