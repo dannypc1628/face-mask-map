@@ -91,6 +91,7 @@ export class MapComponent implements OnInit, OnChanges {
       const key = this.center[0] + this.center[1];
       const marker = this.markersObj[key];
       marker.openPopup();
+      this.map.setZoomAround(this.center, 16);
     }
   }
 

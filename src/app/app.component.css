@@ -1,0 +1,9 @@
+.map-col{
+  height: 100%;
+}
+
+@media screen and (max-width: 575px){
+  .map-col{
+    height: 50vh;
+  }
+}
