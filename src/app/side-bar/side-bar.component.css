@@ -4,11 +4,9 @@
 }
 
 @media screen and (max-width: 575px){
-  .select-bar{
-    max-height: 20vh;
-  }
+
   .side{
-    max-height: 50vh;
+    max-height: 45vh;
   }
 
   .card-list{

@@ -11,14 +11,14 @@
         <a href="#" class="btn " [ngClass]="{'btn-success': item.properties.mask_adult>60,
                 'btn-warning': item.properties.mask_adult<=60&&item.properties.mask_adult>0,
                 'btn-secondary': item.properties.mask_adult==0}">
-          成人口罩剩餘：{{item.properties.mask_adult}}
+          成人口罩：{{item.properties.mask_adult}}
         </a>
       </div>
       <div >
         <a href="#" class="btn " [ngClass]="{'btn-success': item.properties.mask_child>=20,
                   'btn-warning': item.properties.mask_child<20&&item.properties.mask_child>0,
                   'btn-secondary': item.properties.mask_child==0}">
-          兒童口罩剩餘：{{item.properties.mask_child}}
+          兒童口罩：{{item.properties.mask_child}}
         </a>
       </div>
     </div>
