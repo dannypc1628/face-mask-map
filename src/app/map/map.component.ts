@@ -37,35 +37,35 @@ export class MapComponent implements OnInit, OnChanges {
     this.tiles.addTo(this.map);
 
     const greenIcon = L.icon({
-      iconUrl: 'marker-icon-green.png',
+      iconUrl: 'assets/icon/marker-icon-green.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
     const goldIcon = L.icon({
-      iconUrl: 'marker-icon-gold.png',
+      iconUrl: 'assets/icon/marker-icon-gold.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
     const orangeIcon = L.icon({
-      iconUrl: 'marker-icon-orange.png',
+      iconUrl: 'assets/icon/marker-icon-orange.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
     const redIcon = L.icon({
-      iconUrl: 'marker-icon-red.png',
+      iconUrl: 'assets/icon/marker-icon-red.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       shadowSize: [41, 41]
     });
     const greyIcon = L.icon({
-      iconUrl: 'marker-icon-grey.png',
+      iconUrl: 'assets/icon/marker-icon-grey.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
