@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { areAllEquivalent } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-root",
